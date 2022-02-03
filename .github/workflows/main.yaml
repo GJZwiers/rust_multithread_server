@@ -5,7 +5,7 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-20.04
     steps:
-    
+
     - uses: actions/checkout@main
     - uses: azure/login@v1
       with:
@@ -18,5 +18,5 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./infra/storage_account.bicep
-        parameters: storagePrefix=rusty_storage
+        parameters: storagePrefix=rustystore
         failOnStdErr: false
