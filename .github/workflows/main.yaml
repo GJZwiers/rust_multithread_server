@@ -18,5 +18,4 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./infra/main.bicep
-        parameters: storagePrefix=rustystore
         failOnStdErr: false
