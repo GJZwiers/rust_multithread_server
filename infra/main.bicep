@@ -8,3 +8,7 @@ module storageAccount 'storage_account.bicep' = {
     storagePrefix: 'rustystore'
   }
 }
+
+module appService 'app-service.bicep' = {
+  name: 'app_service'
+}
