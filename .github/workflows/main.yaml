@@ -11,11 +11,13 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      # Deploy Bicep file
+      # Deploy Bicep files
     - name: deploy
       uses: azure/arm-deploy@v1
       with:
+        scope: subscription
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: ${{ secrets.AZURE_RG }}
+        # resourceGroupName: ${{ secrets.AZURE_RG }}
+        region: westeurope
         template: ./infra/main.bicep
         failOnStdErr: false
