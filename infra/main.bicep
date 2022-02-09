@@ -15,6 +15,11 @@ resource appServiceRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   location: 'westeurope'
 }
 
+resource containerAppRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
+  name: 'container-app-rg'
+  location: 'westeurope'
+}
+
 module vnet 'vnet.bicep' = {
   name: 'vnet'
   scope: vnetRG
