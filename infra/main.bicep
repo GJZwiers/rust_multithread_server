@@ -43,7 +43,7 @@ module containerAppService 'container_app.bicep' = {
   name: 'log_analytics'
   scope: containerAppRG
   params: {
-    name: 'container_app_service'
+    name: 'containerapp'
     sku: 'PerGB2018'
     retentionInDays: 30
   }
