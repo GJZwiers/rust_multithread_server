@@ -1,4 +1,4 @@
-targetScope='subscription'
+targetScope = 'subscription'
 
 resource vnetRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   name: 'vnet-rg'
