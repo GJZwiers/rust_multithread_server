@@ -30,8 +30,9 @@ param location string
 resource env 'Microsoft.Web/kubeEnvironments@2021-02-01' = {
   name: name
   location: location
+  kind: 'managed'
   properties: {
-    //type: 'managed'
+    // type: 'managed'
     internalLoadBalancerEnabled: false
     appLogsConfiguration: {
       destination: 'log-analytics'
