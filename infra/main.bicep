@@ -1,23 +1,24 @@
 targetScope = 'subscription'
+param location string = 'westeurope'
 
 resource vnetRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   name: 'vnet-rg'
-  location: 'westeurope'
+  location: location
 }
 
 resource storageAccountsRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   name: 'storage-accounts-rg'
-  location: 'westeurope'
+  location: location
 }
 
 resource appServiceRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   name: 'app-service-rg'
-  location: 'westeurope'
+  location: location
 }
 
 resource containerAppRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   name: 'container-app-rg'
-  location: 'westeurope'
+  location: location
 }
 
 module vnet 'vnet.bicep' = {
@@ -38,10 +39,12 @@ module appService 'app-service.bicep' = {
   scope: appServiceRG
 }
 
-module logAnalytics 'log_analytics.bicep' = {
+module containerAppService 'container_app.bicep' = {
   name: 'log_analytics'
   scope: containerAppRG
   params: {
+    name: 'container_app_service'
+    location: location
     sku: 'PerGB2018'
     retentionInDays: 30
   }
