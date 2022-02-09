@@ -23,3 +23,22 @@ resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2021-06
     retentionInDays: retentionInDays
   }
 }
+
+param name string
+param location string
+
+resource env 'Microsoft.Web/kubeEnvironments@2021-02-01' = {
+  name: name
+  location: location
+  properties: {
+    type: 'managed'
+    internalLoadBalancerEnabled: false
+    appLogsConfiguration: {
+      destination: 'log-analytics'
+      logAnalyticsConfiguration: {
+        customerId: logAnalyticsWorkspace.properties.customerId
+        sharedKey: logAnalyticsWorkspace.listKeys().primarySharedKey
+      }
+    }
+  }
+}
