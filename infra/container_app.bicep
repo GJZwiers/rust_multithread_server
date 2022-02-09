@@ -25,14 +25,12 @@ resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2021-06
 }
 
 param name string
-param location string
 
 resource env 'Microsoft.Web/kubeEnvironments@2021-02-01' = {
   name: name
-  location: location
-  kind: 'managed'
+  location: resourceGroup().location
   properties: {
-    // type: 'managed'
+    type: 'managed'
     internalLoadBalancerEnabled: false
     appLogsConfiguration: {
       destination: 'log-analytics'

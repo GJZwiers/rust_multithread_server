@@ -44,7 +44,6 @@ module containerAppService 'container_app.bicep' = {
   scope: containerAppRG
   params: {
     name: 'container_app_service'
-    location: location
     sku: 'PerGB2018'
     retentionInDays: 30
   }
