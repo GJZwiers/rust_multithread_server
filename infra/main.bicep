@@ -42,7 +42,7 @@ module logAnalytics 'log_analytics.bicep' = {
   name: 'log_analytics'
   scope: containerAppRG
   params: {
-    sku: 'Free'
-    retentionInDays: 7
+    sku: 'PerGB2018'
+    retentionInDays: 30
   }
 }
