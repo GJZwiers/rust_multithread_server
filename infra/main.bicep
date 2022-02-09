@@ -37,3 +37,12 @@ module appService 'app-service.bicep' = {
   name: 'app_service'
   scope: appServiceRG
 }
+
+module logAnalytics 'log_analytics.bicep' = {
+  name: 'log_analytics'
+  scope: containerAppRG
+  params: {
+    sku: 'Free'
+    retentionInDays: 7
+  }
+}
