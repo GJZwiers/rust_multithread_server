@@ -46,6 +46,14 @@ module containerAppService 'container_app.bicep' = {
     name: 'containerapp'
     sku: 'PerGB2018'
     retentionInDays: 30
+  }
+}
+
+module containerAppServer 'serviceapp.bicep' = {
+  name: 'server'
+  scope: containerAppRG
+  params: {
     storagePrefix: 'ctrstore'
+    environment_name: containerAppService.outputs.environmentName
   }
 }
