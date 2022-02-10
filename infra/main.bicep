@@ -21,6 +21,11 @@ resource containerAppRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   location: location
 }
 
+resource acrRG 'Microsoft.Resources/resourceGroups@2021-01-01' = {
+  name: 'acr-rg'
+  location: location
+}
+
 module vnet 'vnet.bicep' = {
   name: 'vnet'
   scope: vnetRG
@@ -31,6 +36,14 @@ module storageAccount 'storage_account.bicep' = {
   scope: storageAccountsRG
   params: {
     storagePrefix: 'rustystore'
+  }
+}
+
+module acr 'acr.bicep' = {
+  name: 'container_image_registry'
+  scope: acrRG
+  params: {
+    
   }
 }
 
@@ -49,19 +62,11 @@ module containerAppService 'container_app.bicep' = {
   }
 }
 
-module containerAppServer 'serviceapp.bicep' = {
-  name: 'server'
-  scope: containerAppRG
-  params: {
-    storagePrefix: 'ctrstore'
-    environment_name: containerAppService.outputs.environmentName
-  }
-}
-
-module containerAppClient 'clientapp.bicep' = {
-  name: 'client'
-  scope: containerAppRG
-  params: {
-    environment_name: containerAppService.outputs.environmentName
-  }
-}
+// module containerAppServer 'serviceapp.bicep' = {
+//   name: 'server'
+//   scope: containerAppRG
+//   params: {
+//     storagePrefix: 'ctrstore'
+//     environment_name: containerAppService.outputs.environmentName
+//   }
+// }
