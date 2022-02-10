@@ -46,5 +46,6 @@ module containerAppService 'container_app.bicep' = {
     name: 'containerapp'
     sku: 'PerGB2018'
     retentionInDays: 30
+    storagePrefix: 'containerstore'
   }
 }
