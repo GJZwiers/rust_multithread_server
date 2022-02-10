@@ -57,3 +57,11 @@ module containerAppServer 'serviceapp.bicep' = {
     environment_name: containerAppService.outputs.environmentName
   }
 }
+
+module containerAppClient 'clientapp.bicep' = {
+  name: 'client'
+  scope: containerAppRG
+  params: {
+    environment_name: containerAppService.outputs.environmentName
+  }
+}
